@@ -19,6 +19,6 @@ Route::get('/', function () {
     return view('user.landing');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/user', [UserController::class, 'index']);
