@@ -20,14 +20,15 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5"> 
+            <img src="{{ asset('img/logo.png') }}" alt="staff" style="max-width: 50px">
                 <a class="navbar-brand" href="#!">Sumber bumi <span> organik</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"> 
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Katalog</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Katalog</a></li>  
-                        <li class="nav-item"><a class="nav-link" href="#!">Review</a></li>  
+     
 
                         <!-- <li class="nav-item dropdown"> -->
                             <!-- <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a> -->
@@ -42,12 +43,12 @@
                             </ul> -->
                         <!-- </li> -->
                     </ul>
-                    <form class="d-flex">
+                    <!-- <form class="d-flex">
                     <a class="btn btn-outline-dark" role="button" href="#">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
                         <span class="badge bg-light text-dark ms-1 rounded-pill">0</span>
-                    </a>
+                    </a> -->
 
                     @auth
                         <a href="{{ route('dashboard') }}" class="btn btn-outline-dark ms-1">
@@ -57,7 +58,7 @@
                     @endauth
 
                     @guest
-                        <a href="{{ route('login') }}" class="btn btn-outline-dark ms-1">
+                        <a href="{{ route('login') }}" class="btn btn-outline-success ms-1">
                             <i class="bi-person-fill me-1"></i>
                             Login
                         </a>
@@ -93,7 +94,28 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+    </div><br>
+
+    <!-- <h1>Tentang Kami</h1><br>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="{{ asset('img/visi.jpg') }}" class="card-img-top" alt="visi" style="max-width: 500px">
+      <div class="card-body">
+        <h5 class="card-title">Visi</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
     </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="{{ asset('img/visi.jpg') }}" class="card-img-top" alt="visi" style="max-width: 500px">
+      <div class="card-body">
+        <h5 class="card-title">misi</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div> -->
     
     <!-- Section-->
     <section class="py-5">
@@ -113,6 +135,7 @@
                     </div> 
                 </div>
             </form>
+
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
                 @forelse ($products as $product)
@@ -151,7 +174,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('product.show', ['id' => $product->id]) }}">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-success mt-auto" href="{{ route('product.show', ['id' => $product->id]) }}">Add to cart</a></div>
                             </div>
                         </div>
                     </div>
@@ -162,6 +185,7 @@
                 @endforelse
             </div>
         </div>
+        
     </section>
     <!-- Footer-->
     <footer class="py-5 bg-dark">

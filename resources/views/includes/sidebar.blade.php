@@ -1,5 +1,9 @@
-<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-    <div class="sb-sidenav-menu">
+<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">    
+    <div class="sb-sidenav-menu"><br>
+        <div class="sb-sidenav-menu-heading ps-3">
+            <img src="{{ asset('img/adminn.png') }}" alt="avatar" style="max-width: 60px">
+            {{ Auth::user()->name }} ({{ Auth::user()->role->name }})
+        </div>
         <div class="nav">
             @if (Auth::user()->role->name == 'Admin' || Auth::user()->role->name == 'Staff')
                 <div class="sb-sidenav-menu-heading">Core</div>
@@ -54,14 +58,19 @@
                     Product
                 </a>
             @endif
+            
+            <li>
+            <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="dropdown-item"> <i class="nav-icon fas fa-power-off"></i>Logout</button>
+            </form> 
+        </li>
         </div>
-        <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="dropdown-item">Logout</button>
-        </form>
+
     </div>
     <div class="sb-sidenav-footer">
         <div class="small">Logged in as:</div>
         {{ Auth::user()->name }} ({{ Auth::user()->role->name }})
     </div>
+    
 </nav>

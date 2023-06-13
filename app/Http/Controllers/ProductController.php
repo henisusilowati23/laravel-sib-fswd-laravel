@@ -38,6 +38,11 @@ class ProductController extends Controller
 
     }
 
+    // public function deskripsi()
+    // {
+
+    // }
+
     public function create()
     {
         $brands = Brand::all();

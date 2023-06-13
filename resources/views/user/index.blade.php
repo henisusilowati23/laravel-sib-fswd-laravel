@@ -25,7 +25,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        <img src="{{ asset('img/user.png') }}" alt="avatar" style="max-width: 50px">
+                                        <img src="{{ asset('img/adminn.png') }}" alt="avatar" style="max-width: 50px">
                                     </td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
