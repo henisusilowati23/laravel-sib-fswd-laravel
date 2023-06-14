@@ -1,129 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Develop by henisusilowati</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- font awesome cdn link -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ asset('css/landing.css') }}" rel="stylesheet" />
-    </head>
-    <body>
-        
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5"> 
-            <img src="{{ asset('img/logo.png') }}" alt="staff" style="max-width: 50px">
-                <a class="navbar-brand" href="#!">Sumber bumi <span> organik</span></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"> 
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Katalog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About Us</a></li>
-     
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-                        <!-- <li class="nav-item dropdown"> -->
-                            <!-- <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a> -->
-                            <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Cell Phones</a></li>
-                                <li><a class="dropdown-item" href="#!">Wearable</a></li>
-                                <li><a class="dropdown-item" href="#!">Tablet</a></li>
-                                <li><a class="dropdown-item" href="#!">Laptop</a></li>
-                                <li><a class="dropdown-item" href="#!">Accessories</a></li>
-                            </ul> -->
-                        <!-- </li> -->
-                    </ul>
-                    <!-- <form class="d-flex">
-                    <a class="btn btn-outline-dark" role="button" href="#">
-                        <i class="bi-cart-fill me-1"></i>
-                        Cart
-                        <span class="badge bg-light text-dark ms-1 rounded-pill">0</span>
-                    </a> -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="btn btn-outline-dark ms-1">
-                            <i class="bi-person-fill me-1"></i>
-                            Dashboard
-                        </a>
-                    @endauth
+    <link href="{{ asset('css/stylehome.css') }}" rel="stylesheet" />
 
-                    @guest
-                        <a href="{{ route('login') }}" class="btn btn-outline-success ms-1">
-                            <i class="bi-person-fill me-1"></i>
-                            Login
-                        </a>
-                    @endguest
-                </form>
-            </div>
+    <title>sumber bumi organik</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="{{ asset('img/logo.png') }}" alt="" width="50" height="50" class="me-2">
+      Sumber Bumi<strong> Organik</strong>
+    </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto me-5">
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Katalog</a>
+            </li>
+            <a class="btn btn-outline-light" role="button" href="#">
+                <i class="bi-cart-fill me-1"></i>
+                    Cart
+                    <span class="badge bg-light text-dark ms-1 rounded-pill">0</span>
+            </a>
+            @auth
+            <a href="{{ route('dashboard') }}" class="btn btn-outline-light ms-1">
+                <i class="bi-person-fill me-1"></i>
+                    Dashboard
+            </a>
+            @endauth
+
+             @guest
+             <a href="{{ route('login') }}" class="btn btn-outline-light ms-1">
+                <i class="bi-person-fill me-1"></i>
+                     Login
+            </a>
+            @endguest
+        </ul>
         </div>
+    </div>
     </nav>
     <!-- Carousel-->
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            @foreach ($sliders as $slider)
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->iteration - 1 }}" class="{{ $loop->first ? 'active' : '' }}"
-                    aria-current="{{ $loop->first ? 'true' : '' }}" aria-label="Slide 1"></button>
-            @endforeach
-        </div>
-        <div class="carousel-inner">
-            @foreach ($sliders as $slider)
-                <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="3000">
-                    <img src="{{ asset('storage/slider/' . $slider->image) }}" class="d-block w-100" alt="{{ $slider->image }}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1>{{ $slider->title }}</h1>
-                        <p>{{ $slider->caption }}</p>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                @foreach ($sliders as $slider)
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->iteration - 1 }}" class="{{ $loop->first ? 'active' : '' }}"
+                        aria-current="{{ $loop->first ? 'true' : '' }}" aria-label="Slide 1"></button>
+                @endforeach
+            </div>
+            <div class="carousel-inner">
+                @foreach ($sliders as $slider)
+                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="3000">
+                        <img src="{{ asset('storage/slider/' . $slider->image) }}" class="d-block w-100" alt="{{ $slider->image }}">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1>{{ $slider->title }}</h1>
+                            <p>{{ $slider->caption }}</p>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div><br>
+   
 
-    <!-- <h1>Tentang Kami</h1><br>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col">
-    <div class="card">
-      <img src="{{ asset('img/visi.jpg') }}" class="card-img-top" alt="visi" style="max-width: 500px">
-      <div class="card-body">
-        <h5 class="card-title">Visi</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="{{ asset('img/visi.jpg') }}" class="card-img-top" alt="visi" style="max-width: 500px">
-      <div class="card-body">
-        <h5 class="card-title">misi</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div> -->
-    
-    <!-- Section-->
-    <section class="py-5">
+     <!-- Section-->
+     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <form action="{{ route('landing') }}" method="GET">
                 @csrf 
                 <div class="row g-3 my-5">
-                    <h1>Product Kami</h1>
+                    <h1>Produk Kami</h1>
                     <div class="col-sm-3">
                         <input type="text" class="form-control" placeholder="Min" name="min" value="{{ old('min') }}">
                     </div>
@@ -136,11 +101,11 @@
                 </div>
             </form>
 
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center row-container">
 
                 @forelse ($products as $product)
-                    <div class="col mb-5">
-                        <div class="card h-100">
+                    <div class="col mb-5 mt-3">
+                        <div class="card h-70 mt-3">
                             @if ($product['sale_price'] != 0)
                                 <!-- Sale badge -->
                                 <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
@@ -174,7 +139,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-success mt-auto" href="{{ route('product.show', ['id' => $product->id]) }}">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-light bg-success  mt-auto" href="{{ route('product.show', ['id' => $product->id]) }}">Add to cart</a></div>
                             </div>
                         </div>
                     </div>
@@ -187,6 +152,21 @@
         </div>
         
     </section>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+        
+
+    
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
