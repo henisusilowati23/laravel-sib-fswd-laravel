@@ -21,6 +21,14 @@
                 </a>
             @endif
 
+            <!-- @if (Auth::user()->role->name == 'Staff')
+                <div class="sb-sidenav-menu-heading">Content</div>
+                <a class="nav-link" href="{{ route('slider.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
+                    Slider staff
+                </a>
+            @endif -->
+
             <div class="sb-sidenav-menu-heading">Management</div>
             @if (Auth::user()->role->name == 'Admin' || Auth::user()->role->name == 'Staff')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

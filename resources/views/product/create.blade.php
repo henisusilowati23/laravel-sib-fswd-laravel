@@ -29,6 +29,13 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" value="{{ old('description') }}" name="description" required>
+                            @error('description')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label for="price" class="form-label">Price</label>
                             <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" value="{{ old('price') }}" name="price" required>
                             @error('price')
@@ -62,6 +69,7 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+
 
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <a href="{{ route('product.index') }}" class="btn btn-secondary">Cancel</a>
