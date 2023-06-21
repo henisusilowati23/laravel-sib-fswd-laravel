@@ -1,9 +1,9 @@
 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">    
     <div class="sb-sidenav-menu"><br>
-        <div class="sb-sidenav-menu-heading ps-3">
+        <!-- <div class="sb-sidenav-menu-heading ps-3">
             <img src="{{ asset('img/adminn.png') }}" alt="avatar" style="max-width: 60px">
             {{ Auth::user()->name }} ({{ Auth::user()->role->name }})
-        </div>
+        </div> -->
         <div class="nav">
             @if (Auth::user()->role->name == 'Admin' || Auth::user()->role->name == 'Staff')
                 <div class="sb-sidenav-menu-heading">Core</div>
@@ -76,7 +76,7 @@
         </div>
 
     </div>
-    <div class="sb-sidenav-footer">
+    <div class="sb-sidenav-footer bg-dark">
         <div class="small">Logged in as:</div>
         {{ Auth::user()->name }} ({{ Auth::user()->role->name }})
     </div>

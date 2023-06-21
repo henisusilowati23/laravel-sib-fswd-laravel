@@ -12,7 +12,7 @@
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed"> 
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-black">
             <!-- Navbar Brand-->
             <!-- <img src="{{ asset('img/logo.png') }}" alt="logo" style="max-width: 40px"> -->
             <a class="navbar-brand" href="#">
