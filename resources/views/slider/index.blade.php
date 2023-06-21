@@ -15,7 +15,6 @@
                                 <th>Title</th>
                                 <th>Caption</th>
                                 <th>Image</th>
-                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -28,8 +27,7 @@
                                     <td>
                                         <img src="{{ asset('storage/slider/' . $slider->image) }}" class="img-fluid" style="max-width: 100px;"
                                             alt="{{ $slider->image }}">
-                                    </td>
-                                    <td>{{ $slider->status }}</td>  
+                                    </td> 
                                     <td>
                                     <form onsubmit="return confirm('Are you sure? ');" action="{{ route('slider.destroy', $slider->id) }}" method="POST">
                                                         <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-sm btn-warning">Edit</a>

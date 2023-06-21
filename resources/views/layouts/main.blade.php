@@ -18,7 +18,7 @@
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('img/logo.png') }}" alt="" width="40" height="40" class="me-1">
                 Sumber Bumi<strong> Organik</strong>
-            </a>  
+            </a>  =
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-5 ms-auto" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
