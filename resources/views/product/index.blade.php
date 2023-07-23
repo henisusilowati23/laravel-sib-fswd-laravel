@@ -8,6 +8,7 @@
 <main>
                     <div class="container-fluid px-4">
                         <h1 class="my-4">Product</h1>
+
                         <div class="card mb-4">
                             <div class="card-body">
                             <a class="btn btn-success mb-2" href="{{ route('product.create') }}" role="button">Create New</a>

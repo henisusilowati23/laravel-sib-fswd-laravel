@@ -119,7 +119,7 @@ class ProductController extends Controller
 
             // update data product
             Product::where('id', $id)->update([
-                'category_id' => $request->category,
+                'category_id' => $request->category, 
                 'name' => $request->name,
                 'description' => $request->description,
                 'price' => $request->price,

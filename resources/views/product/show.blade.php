@@ -68,7 +68,7 @@
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 @foreach ($related as $product)
                     <div class="col mb-5">
-                        <div class="card h-70">
+                        <div class="card h-90">
                             <!-- Product image-->
                             <img class="card-img-top" src="{{ asset('storage/product/' . $product->image) }}" alt="..." />
                             <!-- Product details-->
