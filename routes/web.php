@@ -1,16 +1,22 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\SliderController;
+use App\Http\Controllers\AboutCompanyController;
+use App\Http\Controllers\Sejarah\SejarahController;
+use App\Http\Controllers\TestimoniController;
+
 // use App\Http\Controllers\AdminController;
 
 /*
@@ -30,13 +36,37 @@ use App\Http\Controllers\SliderController;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
+// About Us :
+Route::resource('sejarah', SejarahController::class);
+
+// Visi & Misi
+Route::get("/visi-misi", function(){
+   return view('content.visimisi');
+})->name('visi-misi.index');
+
+// Visi & Misi
+Route::get("/contact", function(){
+   return view('content.contact');
+})->name('contact.index');
+
+// Produk
+Route::get("/produk", function(){
+    $products = Product::orderBy('id', 'DESC')->get();
+   return view('content.product', [
+    'products' => $products
+   ]);
+})->name('produk.index');
+
+Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
+
+// Review
+Route::resource('review', TestimoniController::class);
+
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
-
-Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
 
 
 Route::middleware('auth')->group(function() {
@@ -45,6 +75,9 @@ Route::middleware('auth')->group(function() {
 
     //Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // About Company :
+    Route::resource('about-company', AboutCompanyController::class);
 
 
 
@@ -55,9 +88,9 @@ Route::middleware('auth')->group(function() {
         Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create');
         Route::post('/slider', [SliderController::class, 'store'])->name('slider.store');
         Route::get('/slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
-        Route::put('/slider/{id}', [SliderController::class, 'update'])->name('slider.update'); 
+        Route::put('/slider/{id}', [SliderController::class, 'update'])->name('slider.update');
         Route::delete('/slider/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
-        // Route::get('/slider/edit/{id}',[SliderController::class,'edit']) -> name('slider.status'); 
+        // Route::get('/slider/edit/{id}',[SliderController::class,'edit']) -> name('slider.status');
     });
 
     // //staff
@@ -67,21 +100,21 @@ Route::middleware('auth')->group(function() {
     //     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
     //     Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
     //     Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
-    //     Route::put('/admin/{id}', [AdminController::class, 'update'])->name('admin.update'); 
+    //     Route::put('/admin/{id}', [AdminController::class, 'update'])->name('admin.update');
     //     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
-    //     Route::get('/admin/edit/{id}',[AdminController::class,'edit']) -> name('admin.status'); 
+    //     Route::get('/admin/edit/{id}',[AdminController::class,'edit']) -> name('admin.status');
     // });
 
 
     //STAFF & ADMIN
     Route::middleware('role:Admin|Staff')->group(function() {
         //Brand
-        Route::get('/brand', [BrandController::class, 'index'])->name('brand.index'); 
-        Route::get('/brand/create', [BrandController::class, 'create'])->name('brand.create'); 
-        Route::get('/brand/edit/{id}', [BrandController::class, 'edit'])->name('brand.edit'); 
-        Route::post('/brand', [BrandController::class, 'store'])->name('brand.store'); 
-        Route::put('/brand/{id}', [BrandController::class, 'update'])->name('brand.update'); 
-        Route::delete('/brand/{id}', [BrandController::class, 'destroy'])->name('brand.destroy'); 
+        Route::get('/brand', [BrandController::class, 'index'])->name('brand.index');
+        Route::get('/brand/create', [BrandController::class, 'create'])->name('brand.create');
+        Route::get('/brand/edit/{id}', [BrandController::class, 'edit'])->name('brand.edit');
+        Route::post('/brand', [BrandController::class, 'store'])->name('brand.store');
+        Route::put('/brand/{id}', [BrandController::class, 'update'])->name('brand.update');
+        Route::delete('/brand/{id}', [BrandController::class, 'destroy'])->name('brand.destroy');
     });
 
 
@@ -109,14 +142,14 @@ Route::middleware('auth')->group(function() {
         Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
         Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
         Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
-          
+
     });
 
     //Product Show
     // Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
 
 
-    
+
 
 
     //ADMIN

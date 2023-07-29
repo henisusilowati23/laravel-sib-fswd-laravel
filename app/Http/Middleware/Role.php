@@ -18,11 +18,7 @@ class Role
     {
         $explode = explode('|', $role);
 
-        foreach ($explode as $key => $value) {
-            if ($request->user()->role->name == $value) {
                 return $next($request);
-            }
-        }
 
         return abort(403, 'Unauthorized action');
 

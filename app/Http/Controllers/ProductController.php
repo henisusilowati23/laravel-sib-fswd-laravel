@@ -17,24 +17,14 @@ class ProductController extends Controller
     {
         $products = Product::with('category')->get();
 
-        if (Auth::user()->role->name == 'User') {
-            return view('product.card', ['products' => $products]);
-        } else {
-            return view('product.index', ['products' => $products]);
-        }
+        return view('product.index', ['products' => $products]);
     }
 
     public function show($id)
     {
         $product = Product::where('id', $id)->with('category')->first();
 
-        $related = Product::where('category_id', $product->category->id)->inRandomOrder()->limit(4)->get();
-
-        if ($product) {
-            return view('product.show', compact('product', 'related'));
-        } else {
-            abort(404);
-        }
+        return view('product.show', compact('product'));
 
     }
 
@@ -53,14 +43,12 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'category' => 'required',
             'name' => 'required|string|min:3',
             'description' => 'required|string',
             'price' => 'required|integer',
-            'sale_price' => 'required|integer',
-            'brand' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -79,11 +67,9 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'sale_price' => $request->sale_price,
-            'brands' => $request->brand,
             'image' => $imageName,
         ]);
-        
+
         return redirect()->route('product.index');
     }
 
@@ -119,12 +105,10 @@ class ProductController extends Controller
 
             // update data product
             Product::where('id', $id)->update([
-                'category_id' => $request->category, 
+                'category_id' => $request->category,
                 'name' => $request->name,
                 'description' => $request->description,
                 'price' => $request->price,
-                'sale_price' => $request->sale_price,
-                'brands' => $request->brand,
                 'image' => $imageName,
             ]);
 
@@ -135,8 +119,6 @@ class ProductController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,
                 'price' => $request->price,
-                'sale_price' => $request->sale_price,
-                'brands' => $request->brand,
             ]);
         }
 

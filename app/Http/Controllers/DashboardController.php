@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutCompany;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Category;
@@ -13,17 +14,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $role =  Role::count();
+        $abouts =  AboutCompany::count();
         $user =  User::count();
         $category = Category::count();
         $product =  Product::count();
 
-        if (Auth::user()->role->name == 'User') {
-            return redirect()->route('product.index');
-        } else {
-            return view('dashboard',compact('role', 'user', 'category', 'product'));
-        }
-        
+        return view('dashboard',compact('abouts', 'user', 'category', 'product'));
+
     }
-    
+
 }
