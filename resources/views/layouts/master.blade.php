@@ -58,6 +58,9 @@
   {{-- Content --}}
   @yield('content')
 
+  {{-- Footer --}}
+  @include('navbar.footer')
+
 </body>
 
 </html>
