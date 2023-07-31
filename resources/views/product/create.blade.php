@@ -33,11 +33,7 @@
             </div>
             <div class="mb-3">
               <label for="description" class="form-label">Description</label>
-              <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
-                value="{{ old('description') }}" name="description" required>
-              @error('description')
-                <small class="text-danger">{{ $message }}</small>
-              @enderror
+              <textarea class="ckeditor form-control" name="description" required></textarea>
             </div>
             <div class="mb-3">
               <label for="price" class="form-label">Price</label>
@@ -82,6 +78,13 @@
             <button type="submit" class="btn btn-primary">Submit</button>
             <a href="{{ route('product.index') }}" class="btn btn-secondary">Cancel</a>
           </form>
+
+          <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+          <script type="text/javascript">
+            $(document).ready(function() {
+              $('.ckeditor').ckeditor();
+            });
+          </script>
         </div>
       </div>
     </div>

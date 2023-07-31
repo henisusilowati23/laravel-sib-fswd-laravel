@@ -48,8 +48,8 @@
             <div class="col-md-3">
               <h3>Deskripsi:</h3>
             </div>
-            <div class="col-md-3">
-              <span class="fs-2 text-muted ms-5">{{ $product->description }}</span>
+            <div class="col-md-12">
+              <span class="text-muted ms-5" style="font-size: 13px">{{ strip_tags($product->description) }}</span>
             </div>
           </div>
           <div class="row" style="margin-bottom: -20px;">

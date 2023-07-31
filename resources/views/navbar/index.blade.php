@@ -4,6 +4,10 @@
     a {
       text-decoration: none;
     }
+
+    a:hover {
+      color: black;
+    }
   </style>
   <!-- <input type="checkbox" name="" id="toggler"> -->
   <label for="toggler" class="fas fa-bars"></label>
@@ -13,7 +17,7 @@
       <img src="{{ asset('img/logo.png') }}" width="50" alt="" srcset="">
     </div>
     <div class="col-md-9">
-      <a href="#" class="logo">SumberBumi<span>Organik</span></a>
+      <a href="#" class="logo text-uppercase" style="margin-left: -20px;">SumberBumi<span>ORGANIK</span></a>
     </div>
   </div>
 

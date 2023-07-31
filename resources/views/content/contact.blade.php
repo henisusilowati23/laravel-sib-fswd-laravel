@@ -20,7 +20,7 @@
               <h3>Nomor Telpon:</h3>
             </div>
             <div class="col-md-5">
-              <span class="fs-2 text-muted ms-5">+62 8573 0642 909</span>
+              <a href="http://wa.me/6285730642909"><span class="fs-2 text-muted ms-5">+6285730642909</span></a>
             </div>
           </div>
           <div class="row" style="margin-bottom: -20px;">
