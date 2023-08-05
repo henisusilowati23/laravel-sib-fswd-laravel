@@ -28,8 +28,7 @@
             </div>
             <div class="mb-3">
               <label for="description" class="form-label">Description</label>
-              <input type="text" class="form-control" id="description" value="{{ $product->description }}"
-                name="description" required>
+              <textarea class="ckeditor form-control" name="description" required>{{ $product->description }}</textarea>
             </div>
             <div class="mb-3">
               <label for="price" class="form-label">Price</label>
@@ -45,6 +44,12 @@
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="button" class="btn btn-secondary">Cancel</button>
           </form>
+          <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+          <script type="text/javascript">
+            $(document).ready(function() {
+              $('.ckeditor').ckeditor();
+            });
+          </script>
         </div>
       </div>
     </div>

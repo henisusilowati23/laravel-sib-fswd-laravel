@@ -29,13 +29,20 @@
         -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
         animation: fadein 0.5s, fadeout 0.5s 2.5s;
       }
+
+      .about .row .content p {
+        font-size: 1.5rem;
+        color: #999;
+        padding: 0.5rem 0;
+        padding-top: 0 !important;
+        line-height: 1.5;
+      }
     </style>
 
     <section class="about" id="about" style="margin-top: 80px;">
       <h1 class="heading"> <span>Produk:</span> {{ $product->name }} </h1>
       <div class="row">
-
-        <div class="video-container">
+        <div class="video-container" style="margin-top: -310px;">
           @if (!empty($product->image))
             <img src="{{ url('storage/product/' . $product->image) }}" alt="" width="360" height="360">
           @else
@@ -49,23 +56,23 @@
               <h3>Deskripsi:</h3>
             </div>
             <div class="col-md-12">
-              <span class="text-muted ms-5" style="font-size: 13px">{{ strip_tags($product->description) }}</span>
+              <span class="text-muted ms-5" style="font-size: 13px">{!! $product->description !!}</span>
             </div>
           </div>
           <div class="row" style="margin-bottom: -20px;">
             <div class="col-md-3">
               <h3>Kategori:</h3>
             </div>
-            <div class="col-md-3">
-              <span class="fs-2 text-muted ms-5">{{ $product->category->name }}</span>
+            <div class="col-md-12">
+              <span class="fs-2 text-muted">{{ $product->category->name }}</span>
             </div>
           </div>
           <div class="row" style="margin-bottom: -20px;">
             <div class="col-md-3">
               <h3>Harga:</h3>
             </div>
-            <div class="col-md-7">
-              <span class="fs-2 text-muted ms-5">IDR. {{ number_format($product->price) }}</span>
+            <div class="col-md-12">
+              <span class="fs-2 text-muted">IDR. {{ number_format($product->price) }}</span>
             </div>
           </div>
           <div class="row">
