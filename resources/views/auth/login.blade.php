@@ -80,8 +80,8 @@
               <div class="d-grid">
                 <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign In</button>
 
-                <br>
-                <a href="{{ route('register') }}">Register Now</a>
+                {{-- <br>
+                <a href="{{ route('register') }}">Register Now</a> --}}
               </div>
             </form>
           </div>
